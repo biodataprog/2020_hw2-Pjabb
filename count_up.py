@@ -57,3 +57,8 @@ print(gen_count)
 print(tot_gen_len)
 print(tot_cds_len)
 
+
+		    
+		  
+# for part 4 of the question
+		    

@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 import os, gzip, itertools
@@ -31,8 +32,59 @@ if not os.path.exists(file2):
 
 with gzip.open(file1,"rt") as fh:
     seqs = aspairs(fh)
-
+    seq_num = 0
+    total_GC = 0
+    tot_seq_len = 0
     for seq in seqs:
-        seqname  = seq[0]
-        seqstring= seq[1]
-        print(seqname, " first 10 bases are ", seqstring[0:10])
+        seq_num += 1
+        sequence_length = len(seqs[seq])
+        tot_seq_len += sequence_length
+        GC = 0
+        for base in seqs[seq]:
+            if base == "G":
+		GC +=1
+	    if base == "C":
+		GC +=1
+	total_GC += GC
+    triplet= {}
+    for one in {'T' , 'C' , 'G' , 'A'}:
+        for two in {'T' , 'C' , 'G' , 'A'}:
+            for three in {'T' , 'C' , 'G' , 'A'}:
+		assemble = one + two + three
+    triplet=0
+    for i in range(0, tot_seq_len, 3):# 
+        triplet += 1
+print(triplet)
+
+# making the same for file 2
+
+with gzip.open(file2,"rt") as fh:
+    seqs = aspairs(fh)
+    seq_num = 0
+    total_GC = 0
+    tot_seq_len = 0
+    for seq in seqs:
+        seq_num += 1
+        sequence_length = len(seqs[seq])
+        tot_seq_len += sequence_length
+        GC = 0
+        for base in seqs[seq]:
+            if base == "G":
+                GC +=1
+            if base == "C":
+                GC +=1
+        total_GC += GC
+    triplet_2= {}
+    for one in {'T' , 'C' , 'G' , 'A'}:
+        for two in {'T' , 'C' , 'G' , 'A'}:
+            for three in {'T' , 'C' , 'G' , 'A'}:
+                assemble = one + two + three
+    triplet_2=0
+    for i in range(0, tot_seq_len, 3):
+        triplet_2 += 1
+print(triplet_2)
+
+# percentage of GC
+
+percentage= 100* (total_GC / total_seq_length)
+print(percentage)

@@ -44,14 +44,14 @@ with gzip.open(gff,"rt") as fh:
 # part 2 and 3 of q2
 
 if row[2] == "gene" : 
-	gen_count += 1
-	tot_gen_len += (int(row[4] - int(row[3])
+    gen_count += 1
+    tot_gen_len += (int(row[4] - int(row[3])
 
 # part 5 of q2, finding rows whose second columns is CDS:
 
 if row[2] == "CDS" :
-	cds_count += 1
-	tot_cds_len += (int(row[4] - int(row[3]))
+    cds_count += 1
+    tot_cds_len += (int(row[4] - int(row[3]))
 
 print(gen_count)
 print(tot_gen_len)
